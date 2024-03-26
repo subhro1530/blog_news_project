@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      body {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      form {
+        background-color: #333333;
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 94%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <h2>Login</h2>
+      {% if form.errors %}
+        <p style="color: red;">Invalid username or password. Please try again.</p>
+      {% endif %}
+      <div>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" id="id_username" required />
+      </div>
+      <div>
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" id="id_password" required />
+      </div>
+      <button type="submit">Login</button>
+      {% comment %} <p>Don't have an account? <a href="{% url 'signup' %}">Signup here</a></p> {% endcomment %}
+    </form>
+  </body>
+</html>
